@@ -1,0 +1,8 @@
+debian/*
+!debian/changelog
+!debian/control
+!debian/copyright
+!debian/go-simulink-start
+!debian/go-simulink.install
+!debian/go-simulink.service
+!debian/rules

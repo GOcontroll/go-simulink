@@ -1,0 +1,2 @@
+debian/go-simulink.service /lib/systemd/system/
+debian/go-simulink-start /usr/bin/

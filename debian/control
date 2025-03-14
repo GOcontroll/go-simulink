@@ -1,0 +1,17 @@
+Source: go-simulink
+Section: misc
+Priority: optional
+Maintainer: Maud Spierings <maudspierings@gocontroll.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.6.2
+Homepage: https://gocontroll.com
+Vcs-Browser: https://github.com/gocontroll/go-simulink
+Vcs-Git: https://github.com/gocontroll/go-simulink.git
+
+Package: go-simulink
+Architecture: all
+Depends:
+ ${misc:Depends},
+Description: A service that runs a Simulink model on startup
