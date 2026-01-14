@@ -1,3 +1,9 @@
+go-simulink (1.1) unstable; urgency=medium
+
+  * Add the systemd CPU affinity config to this package
+
+ -- Maud Spierings <maudspierings@gocontroll.com>  Wed, 14 Jan 2026 14:33:45 +0100
+
 go-simulink (1.0) unstable; urgency=medium
 
   * Initial release.
