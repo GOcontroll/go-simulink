@@ -5,4 +5,5 @@ debian/*
 !debian/go-simulink-start
 !debian/go-simulink.install
 !debian/go-simulink.service
+!debian/10-cpu_affinity_gocontroll.conf
 !debian/rules

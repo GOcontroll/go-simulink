@@ -1,2 +1,3 @@
-debian/go-simulink.service /lib/systemd/system/
+debian/go-simulink.service /usr/lib/systemd/system/
 debian/go-simulink-start /usr/bin/
+debian/10-cpu_affinity_gocontroll.conf /usr/lib/systemd/system.conf.d/
