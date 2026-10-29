@@ -64,8 +64,16 @@ jobs:
           case "$1" in
               configure)
                   systemctl daemon-reload
-                  systemctl enable go-simulink.service
-                  systemctl restart go-simulink.service || true
+                  # Enable and start on a first install only ($2, the
+                  # previously configured version, is empty). On an upgrade
+                  # the service keeps the state it had: disabled stays
+                  # disabled, and only a running service is restarted.
+                  if [ -z "$2" ]; then
+                      systemctl enable go-simulink.service
+                      systemctl restart go-simulink.service || true
+                  else
+                      systemctl try-restart go-simulink.service || true
+                  fi
                   ;;
           esac
           POSTINST
@@ -77,8 +85,9 @@ jobs:
           set -e
           case "$1" in
               remove|purge)
+                  # Stop only. The enable links stay until purge, so a
+                  # reinstall after a remove comes back in the same state.
                   systemctl stop go-simulink.service || true
-                  systemctl disable go-simulink.service || true
                   ;;
           esac
           PRERM
@@ -90,6 +99,8 @@ jobs:
           set -e
           case "$1" in
               purge)
+                  find /etc/systemd/system -type l -path '*.wants/*' \
+                      -name go-simulink.service -delete 2>/dev/null || true
                   systemctl daemon-reload || true
                   ;;
           esac
